@@ -1,0 +1,158 @@
+<h2>Getting Started</h2>
+<p>Welcome to the MyAgent Voice Agent Server. This application manages voice AI agents that handle phone calls using LiveKit. Follow these steps to set up and use the application:</p>
+
+<h2>Initial Setup</h2>
+<ol>
+    <li><strong>Sign In:</strong> When you first open the application, you'll be prompted to sign in with your Firebase credentials. Only existing accounts can sign in (sign up is disabled).</li>
+    <li><strong>Configure Settings:</strong> Navigate to the Configuration tab to set up your server settings, Chrome launcher options, agent paths, and other preferences.</li>
+    <li><strong>Review Defaults:</strong> Most settings have sensible defaults. Only modify what you need to customize.</li>
+    <li><strong>Save Configuration:</strong> Click "Save Configuration" to save your settings. The server is already running, so changes take effect immediately or may require a restart depending on the setting.</li>
+    <li><strong>Install Modules (Optional):</strong> If you need browser automation modules, go to the Modules tab, sign in if needed, and install required files from Firebase.</li>
+    <li><strong>Configure Performance Profile:</strong> Set the performance profile based on your system capabilities (low for low-end PCs, balanced for normal use, high for best quality).</li>
+    <li><strong>Turn Detector Models (Optional):</strong> Turn detector models are completely optional. The agent works fine without them. If you want better conversation flow, models can be downloaded automatically when needed. See the "Turn Detector Model Installation" section below for details.</li>
+</ol>
+
+<h2>Application Tabs</h2>
+<ul>
+    <li><strong>Dashboard:</strong> Monitor agent status, control agent operations, view statistics, and manage webhook listening.</li>
+    <li><strong>Configuration:</strong> Configure all application settings organized by category.</li>
+    <li><strong>Call History:</strong> View past calls, search and filter call records, and read full transcripts.</li>
+    <li><strong>Modules:</strong> Download and install browser automation modules from Firebase (requires authentication).</li>
+    <li><strong>Instructions:</strong> This guide - getting started and usage information.</li>
+    <li><strong>Help & Support:</strong> Troubleshooting guides, common issues, and contact information.</li>
+    <li><strong>About:</strong> Version information and build details.</li>
+    <li><strong>Credits:</strong> Acknowledgments and credits.</li>
+</ul>
+
+<h2>Configuration Categories</h2>
+<ul>
+    <li><strong>Server:</strong> Configure the host and port where the FastAPI server will run (default: 0.0.0.0:8000).</li>
+    <li><strong>Process Management:</strong> Settings for agent process management, timeouts, and startup delays.</li>
+    <li><strong>Agent Paths:</strong> Configure paths to your agent files and log directories.</li>
+    <li><strong>Google Sheets:</strong> Set up Google Sheets integration for contact lookup during incoming calls.</li>
+    <li><strong>Chrome Launcher:</strong> Configure Chrome browser settings for automation (debug port, user data directory, executable path).</li>
+    <li><strong>Browser Automation:</strong> Settings for backoffice login URL, login type, and automation behavior.</li>
+    <li><strong>Agent Configuration:</strong> Default agent use cases, audio device selection, and agent behavior settings.</li>
+    <li><strong>Performance:</strong> Configure performance profiles and optimization settings for low-end or high-end systems.</li>
+    <li><strong>Logging:</strong> Log directory paths and log management settings.</li>
+</ul>
+
+<h2>Using the Dashboard</h2>
+<p>The Dashboard is your main control center:</p>
+<ul>
+    <li><strong>Server Status:</strong> Shows if the main server is running.</li>
+    <li><strong>Webhook Toggle:</strong> Enable/disable webhook listening. When enabled, Chrome starts automatically, browser service connects, and login is executed. When disabled, agent stops, browser service closes, and Chrome stops.</li>
+    <li><strong>Agent Type:</strong> Choose between "Bundled" (uses myagent.py) or "Online" (fetches agent code from Firebase).</li>
+    <li><strong>Statistics:</strong> View total calls, active calls, agent uptime, and average rating.</li>
+    <li><strong>Agent Status:</strong> Monitor agent process status, PID, uptime, and call status.</li>
+    <li><strong>Controls:</strong>
+        <ul>
+            <li>Start Agent: Manually start an agent with client code, phone number, and name.</li>
+            <li>Start Test Agent: Quick start with test credentials.</li>
+            <li>Stop Agent: Gracefully stop the running agent.</li>
+            <li>Manual Overtake: Stop agent but keep call alive for manual intervention.</li>
+            <li>End Call: Stop agent and end the call.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Webhook Workflow</h2>
+<p>When webhook listening is enabled:</p>
+<ol>
+    <li>Incoming calls trigger the webhook endpoint with a phone number.</li>
+    <li>The system looks up the contact in Google Sheets using the phone number.</li>
+    <li>If found, the system makes a pick request to the configured pick service.</li>
+    <li>The voice agent starts automatically with the contact information.</li>
+    <li>Call transcripts and summaries are saved to the call history.</li>
+</ol>
+
+<h2>Call History</h2>
+<p>The Call History tab allows you to:</p>
+<ul>
+    <li>View all past calls with details (date, time, duration, client info, summary, mood, rating).</li>
+    <li>Search calls by phone number, client name, client code, or summary.</li>
+    <li>Filter calls by date range.</li>
+    <li>View full transcripts with speaker identification and timestamps.</li>
+    <li>Navigate through paginated results.</li>
+</ul>
+
+<h2>Performance Profiles</h2>
+<p>The application supports three performance profiles to optimize resource usage based on your system capabilities:</p>
+<ul>
+    <li><strong>Low Profile:</strong> Optimized for low-end Windows PCs and systems with limited resources.
+        <ul>
+            <li>Uses faster STT model (nova-2) for reduced CPU usage</li>
+            <li>Limits LLM response length (100 tokens) for faster generation</li>
+            <li>Disables preemptive generation to reduce CPU load</li>
+            <li>Disables noise cancellation to save processing power</li>
+            <li>Skips turn detection (models not required)</li>
+            <li><strong>Expected impact:</strong> 30-50% CPU reduction, 20-30% memory reduction</li>
+        </ul>
+    </li>
+    <li><strong>Balanced Profile (Default):</strong> Recommended for most systems with moderate resources.
+        <ul>
+            <li>Uses standard STT model (nova-3) for good accuracy</li>
+            <li>Moderate LLM response length (150 tokens)</li>
+            <li>Enables preemptive generation for better responsiveness</li>
+            <li>Enables noise cancellation for better audio quality</li>
+            <li>Turn detection optional (works without models, better with models)</li>
+        </ul>
+    </li>
+    <li><strong>High Profile:</strong> Best quality for high-end systems with ample resources.
+        <ul>
+            <li>Uses standard STT model (nova-3) for best accuracy</li>
+            <li>Longer LLM response length (200 tokens) for detailed responses</li>
+            <li>Enables preemptive generation for optimal responsiveness</li>
+            <li>Enables noise cancellation for best audio quality</li>
+            <li>Turn detection recommended (better conversation flow)</li>
+        </ul>
+    </li>
+</ul>
+<p><strong>Configuration:</strong> Set <code>PERFORMANCE_PROFILE</code> in the Configuration tab under the Performance category. You can also override individual settings (STT model, LLM tokens, etc.) if needed.</p>
+
+<h2>Turn Detector Model Installation</h2>
+<p>Turn detection improves conversation flow by detecting when the user has finished speaking. The agent works perfectly fine without turn detector models - they are completely optional.</p>
+<p><strong>Automatic Behavior:</strong> The agent automatically skips turn detection if models are not found, regardless of performance profile. If models are available, they will be used for better conversation flow in balanced and high profiles.</p>
+<h3>Downloading Turn Detector Models (Optional)</h3>
+<p>If you want to enable turn detection, you can download the models using LiveKit's CLI tools. The models will be automatically downloaded to your system's cache directory (managed by LiveKit) when first needed, or you can download them manually:</p>
+<p><strong>What gets downloaded:</strong> The following files are stored in your system's cache directory:</p>
+<ul>
+    <li><code>model_q8.onnx</code> - The quantized ONNX model for turn detection</li>
+    <li><code>languages.json</code> - Language configuration file</li>
+</ul>
+<p><strong>Verification:</strong> When you start the agent, check the logs. If models are found, you'll see "Turn detector initialized successfully". If models are missing, you'll see a warning message, but the agent will continue to work normally without turn detection.</p>
+<p><strong>Note:</strong> The agent is designed to work without turn detection models. They are an optional enhancement for better conversation flow, but not required for the agent to function.</p>
+
+<h2>Module Management</h2>
+<p>The Modules tab enables you to:</p>
+<ul>
+    <li>Sign in with Firebase credentials (required for downloading modules).</li>
+    <li>View your installer ID (used to identify which modules are available for your installation).</li>
+    <li>Browse available modules from Firebase.</li>
+    <li>Install required browser automation modules.</li>
+    <li>View installed modules and their versions.</li>
+</ul>
+
+<h2>Important Notes</h2>
+<ul>
+    <li><strong>Authentication:</strong> You must sign in to use the application. Authentication is required for module downloads and is validated on startup.</li>
+    <li><strong>Chrome Browser:</strong> Ensure Chrome is installed for browser automation features. Chrome will auto-start when webhook listening is enabled.</li>
+    <li><strong>Security:</strong> Keep your <code>.env.secrets</code> file secure - it contains sensitive credentials like API keys and Firebase configuration.</li>
+    <li><strong>File Paths:</strong> Use absolute paths for file paths to ensure cross-platform compatibility.</li>
+    <li><strong>Ports:</strong> Ensure port numbers are available and not in use by other applications (default server port: 8000, Chrome debug port: 9222).</li>
+    <li><strong>Agent Types:</strong> "Bundled" uses the local myagent.py agent file. "Online" fetches agent code from Firebase based on your installer ID.</li>
+    <li><strong>Configuration Changes:</strong> Some configuration changes require restarting services. The application will prompt you when restarts are needed.</li>
+    <li><strong>Performance Profiles:</strong> For low-end Windows PCs, use the "low" performance profile to reduce CPU and memory usage. Turn detector models are automatically skipped if not found, regardless of performance profile.</li>
+    <li><strong>Turn Detector Models:</strong> Turn detector models are completely optional. The agent automatically skips turn detection if models are not found, regardless of performance profile. Models improve conversation flow but are not required for the agent to function.</li>
+    <li><strong>Logs:</strong> All logs are stored in the configured log directory. Log cleanup runs automatically to manage disk space.</li>
+</ul>
+
+<h2>Closing the Application</h2>
+<p>Use the "Close App" button in the header to shut down the application. This will:</p>
+<ul>
+    <li>Stop any running agent processes</li>
+    <li>Close browser service connections</li>
+    <li>Stop Chrome instances</li>
+    <li>Shut down the API server</li>
+</ul>
+<p><strong>Warning:</strong> This action cannot be undone. Make sure to save any important work before closing.</p>

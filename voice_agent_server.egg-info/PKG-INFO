@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: voice-agent-server
+Version: 1.0.0
+Summary: Voice AI assistant server with LiveKit Agents
+Requires-Python: >=3.9
+Requires-Dist: livekit-agents[deepgram,elevenlabs,openai,silero,turn-detector]~=1.3
+Requires-Dist: livekit-plugins-noise-cancellation~=0.2
+Requires-Dist: python-dotenv
+Requires-Dist: fastapi>=0.104.0
+Requires-Dist: uvicorn[standard]>=0.24.0
+Requires-Dist: playwright>=1.40.0
+Requires-Dist: httpx>=0.25.0
+Requires-Dist: google-auth>=2.3.0
+Requires-Dist: google-api-python-client>=2.0.0
+Requires-Dist: google-auth-oauthlib>=0.4.6
+Requires-Dist: firebase-admin>=6.0.0
+Requires-Dist: pyrebase4>=4.7.0
+Requires-Dist: setuptools>=80.9.0

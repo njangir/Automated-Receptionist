@@ -1,0 +1,64 @@
+106591 ERROR: Hidden import 'livekit' not found
+106592 INFO: Analyzing hidden import 'livekit.agents'
+106594 ERROR: Hidden import 'livekit.agents' not found
+106594 INFO: Analyzing hidden import 'livekit.plugins'
+106596 ERROR: Hidden import 'livekit.plugins' not found
+106596 INFO: Analyzing hidden import 'livekit.plugins.noise_cancellation'
+106599 ERROR: Hidden import 'livekit.plugins.noise_cancellation' not found
+106599 INFO: Analyzing hidden import 'livekit.plugins.silero'
+106602 ERROR: Hidden import 'livekit.plugins.silero' not found
+106603 INFO: Analyzing hidden import 'livekit.plugins.openai'
+106607 ERROR: Hidden import 'livekit.plugins.openai' not found
+106608 INFO: Analyzing hidden import 'livekit.plugins.elevenlabs'
+106610 ERROR: Hidden import 'livekit.plugins.elevenlabs' not found
+106610 INFO: Analyzing hidden import 'livekit.plugins.deepgram'
+106612 ERROR: Hidden import 'livekit.plugins.deepgram' not found
+106613 INFO: Analyzing hidden import 'livekit.plugins.turn_detector'
+106614 ERROR: Hidden import 'livekit.plugins.turn_detector' not found
+106615 INFO: Analyzing hidden import 'livekit.plugins.turn_detector.multilingual'
+106617 ERROR: Hidden import 'livekit.plugins.turn_detector.multilingual' not found
+106617 INFO: Analyzing hidden import 'services.call_logger'
+106674 INFO: Analyzing hidden import 'pyrebase4'
+106676 ERROR: Hidden import 'pyrebase4' not found
+106676 INFO: Analyzing hidden import 'httpx._transports.async_base'
+106677 ERROR: Hidden import 'httpx._transports.async_base' not found
+106677 INFO: Processing module hooks (post-graph stage)...
+114418 INFO: Processing standard module hook 'hook-tzdata.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+115715 INFO: Performing binary vs. data reclassification (1902 entries)
+118161 INFO: Looking for ctypes DLLs
+118321 INFO: Analyzing run-time hooks ...
+118342 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\PyInstaller\\hooks\\rthooks'
+118353 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\PyInstaller\\hooks\\rthooks'
+118361 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\PyInstaller\\hooks\\rthooks'
+118368 INFO: Including run-time hook 'pyi_rth_setuptools.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\PyInstaller\\hooks\\rthooks'
+118374 INFO: Including run-time hook 'pyi_rth_cryptography_openssl.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\_pyinstaller_hooks_contrib\\rthooks' 
+118402 INFO: Including run-time hook 'pyi_rth_pkgres.py' from 'C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\PyInstaller\\hooks\\rthooks'
+118612 INFO: Creating base_library.zip...
+118659 INFO: Looking for dynamic libraries
+C:\Users\njak4\AppData\Roaming\Python\Python314\site-packages\PyInstaller\building\build_main.py:227: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  _import_(package)
+C:\Users\njak4\AppData\Roaming\Python\Python314\site-packages\PyInstaller\building\build_main.py:227: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  _import_(package)
+125553 INFO: Extra DLL search directories (AddDllDirectory): ['C:\\Users\\njak4\\AppData\\Roaming\\Python\\Python314\\site-packages\\google_crc32c\\extra-dll']
+125556 INFO: Extra DLL search directories (PATH): []
+127842 INFO: Warnings written to C:\Users\njak4\Downloads\n8n\n8n-Banya-Automation\build\voice-agent-server\warn-voice-agent-server.txt
+128380 INFO: Graph cross-reference written to C:\Users\njak4\Downloads\n8n\n8n-Banya-Automation\build\voice-agent-server\xref-voice-agent-server.html
+128687 INFO: checking PYZ
+128688 INFO: Building PYZ because PYZ-00.toc is non existent
+128688 INFO: Building PYZ (ZlibArchive) C:\Users\njak4\Downloads\n8n\n8n-Banya-Automation\build\voice-agent-server\PYZ-00.pyz
+131506 INFO: Building PYZ (ZlibArchive) C:\Users\njak4\Downloads\n8n\n8n-Banya-Automation\build\voice-agent-server\PYZ-00.pyz completed successfully.
+131724 INFO: checking PKG
+131725 INFO: Building PKG because PKG-00.toc is non existent
+131725 INFO: Building PKG (CArchive) voice-agent-server.pkg
+148295 INFO: Building PKG (CArchive) voice-agent-server.pkg completed successfully.
+148410 INFO: Bootloader C:\Users\njak4\AppData\Roaming\Python\Python314\site-packages\PyInstaller\bootloader\Windows-64bit-intel\run.exe
+148411 INFO: checking EXE
+148411 INFO: Building EXE because EXE-00.toc is non existent
+148411 INFO: Building EXE from EXE-00.toc
+148412 INFO: Copying bootloader EXE to C:\Users\njak4\Downloads\n8n\n8n-Banya-Automation\dist\voice-agent-server.exe
+148510 INFO: Copying icon to EXE
+148597 INFO: Copying 0 resources to EXE
+148598 INFO: Embedding manifest in EXE
+148701 INFO: Appending PKG archive to EXE
+148805 INFO: Fixing EXE headers
+150091 INFO: Building EXE from EXE-00.toc completed successfully.

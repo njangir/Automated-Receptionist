@@ -1,0 +1,111 @@
+<div class="call-history-container">
+    <h2>Call History</h2>
+    
+    <div id="call-history-loading" class="loading-message" style="display: none;">
+        Loading call history...
+    </div>
+    
+    <div id="call-history-empty" class="empty-message" style="display: none;">
+        <p>No call history available yet.</p>
+    </div>
+    
+    <div id="call-history-content" style="display: none;">
+        <div class="call-history-controls">
+            <div class="call-history-filters">
+                <div class="filter-group">
+                    <label for="call-history-search">Search:</label>
+                    <input type="text" id="call-history-search" class="filter-input" placeholder="Search by phone, name, client code, or summary..." oninput="configUI.filterCallHistory()">
+                </div>
+                <div class="filter-group">
+                    <label for="call-history-date-from">From:</label>
+                    <input type="date" id="call-history-date-from" class="filter-input" onchange="configUI.filterCallHistory()">
+                </div>
+                <div class="filter-group">
+                    <label for="call-history-date-to">To:</label>
+                    <input type="date" id="call-history-date-to" class="filter-input" onchange="configUI.filterCallHistory()">
+                </div>
+                <div class="filter-group">
+                    <button class="btn btn-secondary" onclick="configUI.clearCallHistoryFilters()">Clear Filters</button>
+                </div>
+                <div class="filter-group">
+                    <button class="btn btn-primary" onclick="configUI.refreshCallHistory()">Refresh</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="call-history-info">
+            <span id="call-history-count">Showing 0 of 0 calls</span>
+        </div>
+        
+        <div class="table-container">
+            <table class="call-history-table">
+                <thead>
+                    <tr>
+                        <th>Date/Time</th>
+                        <th>Phone</th>
+                        <th>Client Code</th>
+                        <th>Name</th>
+                        <th>Duration</th>
+                        <th>Summary</th>
+                        <th>Mood</th>
+                        <th>Rating</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="call-history-table-body">
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="pagination-controls">
+            <button class="btn btn-secondary" id="call-history-prev" onclick="configUI.previousCallHistoryPage()" disabled>Previous</button>
+            <span class="pagination-info">
+                Page <span id="call-history-page">1</span> of <span id="call-history-total-pages">1</span>
+            </span>
+            <button class="btn btn-secondary" id="call-history-next" onclick="configUI.nextCallHistoryPage()" disabled>Next</button>
+        </div>
+    </div>
+    
+    
+    <div id="transcript-modal-history" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Call Transcript</h3>
+                <span class="modal-close" onclick="configUI.closeTranscriptModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="transcript-loading-history" class="loading-message">Loading transcript...</div>
+                <div id="transcript-content-history" style="display: none;">
+                    <div class="transcript-info">
+                        <div class="info-row">
+                            <strong>Call ID:</strong> <span id="transcript-call-id-history"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Start Time:</strong> <span id="transcript-start-time-history"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Duration:</strong> <span id="transcript-duration-history"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Client:</strong> <span id="transcript-client-history"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Summary:</strong> <span id="transcript-summary-history"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Mood:</strong> <span id="transcript-mood-history"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Rating:</strong> <span id="transcript-rating-history"></span>
+                        </div>
+                    </div>
+                    <div class="transcript-text">
+                        <h4>Conversation:</h4>
+                        <div id="transcript-conversation-history" class="transcript-conversation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+{
+  "bank_details": "Bank Name followed by Account Number: Demo Bank / ****4242 (mock data — replace with your own integration)",
+  "portfolio_markdown": "| Symbol | Qty | Avg |\n| --- | --- | --- |\n| DEMO | 10 | 100.00 |"
+}

@@ -1,0 +1,99 @@
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h2>Control Panel</h2>
+        <div class="header-status-buttons">
+            <div class="server-status" id="server-status-indicator">
+                <span class="status-dot" id="server-status-dot"></span>
+                <span id="server-status-text">Checking...</span>
+            </div>
+            <button class="webhook-status-button" id="webhook-status-button" onclick="configUI.toggleWebhook()">
+                <span class="status-dot" id="webhook-status-dot"></span>
+                <span id="webhook-status-text">Listening for calls</span>
+            </button>
+            <select id="agent-type-select" class="agent-type-select" onchange="configUI.setAgentType(this.value)">
+                <option value="bundled">Bundled (myagent.py)</option>
+                <option value="online">Online Agent</option>
+            </select>
+        </div>
+    </div>
+
+    
+    <div class="stats-cards-row">
+        <div class="stat-card">
+            <div class="stat-icon">📞</div>
+            <div class="stat-content">
+                <div class="stat-value" id="total-calls">0</div>
+                <div class="stat-label">Total Calls</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🟢</div>
+            <div class="stat-content">
+                <div class="stat-value" id="active-calls">0</div>
+                <div class="stat-label">Active Calls</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-content">
+                <div class="stat-value" id="agent-uptime-stat">-</div>
+                <div class="stat-label">Agent Uptime</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-content">
+                <div class="stat-value" id="average-rating">-</div>
+                <div class="stat-label">Avg Rating</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        
+        <div class="dashboard-card">
+            <h3>Agent Status</h3>
+            <div class="agent-status-display" id="agent-status-display">
+                <div class="status-indicator">
+                    <span class="status-dot" id="agent-status-dot"></span>
+                    <span id="agent-status-text">Unknown</span>
+                </div>
+                <div class="status-details" id="agent-status-details">
+                    <p><strong>PID:</strong> <span id="agent-pid">-</span></p>
+                    <p><strong>Uptime:</strong> <span id="agent-uptime">-</span></p>
+                    <p><strong>Call Status:</strong> <span id="call-status">No active call</span></p>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="dashboard-card">
+            <h3>Controls</h3>
+            <div class="control-buttons">
+                <button class="btn btn-icon" id="start-agent-btn" onclick="configUI.startAgent()" title="Start Agent">
+                    <img src="/static/svg/phone-outgoing.svg" alt="Start Agent" width="20" height="20">
+                </button>
+                <button class="btn btn-icon" id="start-test-agent-btn" onclick="configUI.startTestAgent()"
+                    title="Start Test Agent">
+                    <img src="/static/svg/play-circle.svg" alt="Start Test Agent" width="20" height="20">
+                </button>
+                <button class="btn  btn-icon" id="stop-agent-btn" onclick="configUI.stopAgent()" title="Stop Agent">
+                    <img src="/static/svg/stop-circle.svg" alt="Stop Agent" width="20" height="20">
+                </button>
+                <button class="btn btn-icon" id="overtake-btn" onclick="configUI.manualOvertake()"
+                    title="Manual Overtake">
+                    <img src="/static/svg/scissors.svg" alt="Manual Overtake" width="20" height="20">
+
+                </button>
+                <button class="btn btn-icon" id="end-call-btn" onclick="configUI.endCall()" title="End Call">
+                    <img src="/static/svg/phone-off.svg" alt="End Call" width="20" height="20">
+                </button>
+            </div>
+            <div style="margin-top: 15px;">
+                <button class="btn btn-primary" id="view-live-transcript-btn" onclick="configUI.openLiveTranscriptDialogManually()" style="width: 100%; padding: 10px;">
+                    📝 View Live Transcript
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

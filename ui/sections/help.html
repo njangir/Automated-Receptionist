@@ -1,0 +1,76 @@
+<h2>Help & Support</h2>
+<p>Find answers to common questions and get help with the Voice Agent Server.</p>
+
+<div class="help-buttons">
+    <a href="https://wa.me/+917023230034?text=Hello" target="_blank" rel="noopener" class="btn btn-success help-button-link">
+        <span>💬</span> Message on WhatsApp
+    </a>
+    <a href="mailto:njak46.jangir@gmail.com" class="btn btn-primary help-button-link">
+        <span>✉️</span> Email Support
+    </a>
+</div>
+
+<h2>Documentation</h2>
+<ul>
+    <li><strong>Configuration Guide:</strong> See the Instructions tab for setup instructions.</li>
+    <li><strong>API Documentation:</strong> Once the server is running, visit <code>http://localhost:8000/docs</code> for interactive API documentation.</li>
+    <li><strong>Configuration Files:</strong> Check <code>CONFIG_FILES_GUIDE.md</code> for detailed information about configuration files.</li>
+</ul>
+
+<h2>Common Issues</h2>
+
+<h3>Server Won't Start</h3>
+<ul>
+    <li>Check if the port is already in use by another application.</li>
+    <li>Verify that all required dependencies are installed.</li>
+    <li>Check the log files for error messages.</li>
+</ul>
+
+<h3>Chrome Not Starting</h3>
+<ul>
+    <li>Ensure Google Chrome is installed on your system.</li>
+    <li>Check the Chrome executable path in configuration.</li>
+    <li>Verify that the Chrome debug port (default: 9222) is not in use.</li>
+    <li>Try manually starting Chrome with remote debugging enabled.</li>
+</ul>
+
+<h3>Configuration Not Saving</h3>
+<ul>
+    <li>Check file permissions for the <code>.env.config</code> file.</li>
+    <li>Ensure the application has write access to the configuration directory.</li>
+    <li>Verify that the configuration values are valid (check validation errors).</li>
+</ul>
+
+<h3>Agent Not Starting</h3>
+<ul>
+    <li>Verify the agent entrypoint file exists in the agents directory.</li>
+    <li>Check that all required environment variables are set in <code>.env.secrets</code>.</li>
+    <li>Review agent logs for specific error messages.</li>
+    <li>Ensure LiveKit server is running and accessible.</li>
+</ul>
+
+<h2>Troubleshooting Steps</h2>
+<ol>
+    <li>Review the error messages in the UI or log files.</li>
+    <li>Verify all configuration values are correct.</li>
+    <li>Check that all required services (Chrome, LiveKit) are running.</li>
+    <li>Restart the application and try again.</li>
+    <li>Check system resources (memory, disk space).</li>
+</ol>
+
+<h2>Getting More Help</h2>
+<p>If you continue to experience issues:</p>
+<ul>
+    <li>Check the application logs in the configured log directory.</li>
+    <li>Review the error messages carefully - they often contain helpful information.</li>
+    <li>Ensure you're using the latest version of the application.</li>
+    <li>Verify your system meets the minimum requirements (Python 3.9+, Chrome browser).</li>
+</ul>
+
+<h2>System Requirements</h2>
+<ul>
+    <li>Python 3.9 or higher</li>
+    <li>Google Chrome browser (for browser automation)</li>
+    <li>Sufficient disk space for logs and temporary files</li>
+    <li>Network access for API calls and LiveKit connections</li>
+</ul>

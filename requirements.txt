@@ -1,0 +1,15 @@
+# FastAPI and server
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-dotenv>=0.19.0
+
+# HTTP client
+httpx>=0.25.0
+
+# Google Sheets API
+google-auth>=2.3.0
+google-api-python-client>=2.0.0
+google-auth-oauthlib>=0.4.6
+
+# Note: LiveKit agents dependencies are in python/agent-starter-python/pyproject.toml
+# The main server doesn't need LiveKit deps directly - agents handle that

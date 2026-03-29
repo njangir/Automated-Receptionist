@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyAgent Voice Agent</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>MyAgent Voice Agent</h1>
+                    <p class="subtitle">Configuration & Setup</p>
+                </div>
+                <button id="close-app-btn" class="btn btn-danger" onclick="configUI.closeApp()">Close App</button>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="dashboard">
+                <span>📊</span> Dashboard
+            </button>
+            <button class="tab-button" data-tab="config">
+                <span>⚙️</span> Configuration
+            </button>
+            <button class="tab-button" data-tab="call-history">
+                <span>📞</span> Call History
+            </button>
+            <button class="tab-button" data-tab="modules">
+                <span>📦</span> Modules
+            </button>
+            <button class="tab-button" data-tab="instructions">
+                <span>📖</span> Instructions
+            </button>
+            <button class="tab-button" data-tab="help">
+                <span>❓</span> Help & Support
+            </button>
+            <button class="tab-button" data-tab="about">
+                <span>ℹ️</span> About
+            </button>
+            <button class="tab-button" data-tab="credits">
+                <span>🙏</span> Credits
+            </button>
+        </nav>
+
+        <main class="content">
+            <div id="dashboard-screen" class="tab-content active">
+                
+            </div>
+            <div id="config-screen" class="tab-content">
+                
+            </div>
+            <div id="call-history-screen" class="tab-content">
+                
+            </div>
+            <div id="modules-screen" class="tab-content">
+                
+            </div>
+            <div id="instructions-screen" class="tab-content">
+                
+            </div>
+            <div id="help-screen" class="tab-content">
+                
+            </div>
+            <div id="about-screen" class="tab-content">
+                
+            </div>
+            <div id="credits-screen" class="tab-content">
+                
+            </div>
+        </main>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    
+    <div id="live-transcript-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="live-transcript-title">Live Call Transcript</h3>
+                <span class="modal-close" onclick="configUI.closeLiveTranscriptModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="transcript-info">
+                    <div class="info-row">
+                        <strong>Caller:</strong> <span id="live-transcript-caller-name"></span>
+                    </div>
+                    <div class="info-row">
+                        <strong>Phone:</strong> <span id="live-transcript-caller-phone"></span>
+                    </div>
+                    <div class="info-row">
+                        <strong>Client Code:</strong> <span id="live-transcript-caller-code"></span>
+                    </div>
+                </div>
+                <div class="transcript-text">
+                    <h4>Live Conversation:</h4>
+                    <div id="live-transcript-conversation-container" class="transcript-conversation live-scroll"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="transcript-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="transcript-title">Call Transcript</h3>
+                <span class="modal-close" onclick="configUI.closeTranscriptModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                
+                <div id="transcript-content" style="display: none;">
+                    <div class="transcript-info">
+                        <div class="info-row">
+                            <strong>Call ID:</strong> <span id="transcript-call-id"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Start Time:</strong> <span id="transcript-start-time"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Duration:</strong> <span id="transcript-duration"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Client:</strong> <span id="transcript-client"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Summary:</strong> <span id="transcript-summary"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Mood:</strong> <span id="transcript-mood"></span>
+                        </div>
+                        <div class="info-row">
+                            <strong>Rating:</strong> <span id="transcript-rating"></span>
+                        </div>
+                    </div>
+                    <div class="transcript-text">
+                        <h4>Conversation:</h4>
+                        <div id="transcript-conversation" class="transcript-conversation"></div>
+                    </div>
+                </div>
+                
+                
+                <div id="transcript-loading" class="loading-message" style="display: none;">Loading transcript...</div>
+            </div>
+        </div>
+    </div>
+
+    
+    <dialog id="login-modal" class="login-dialog">
+        <div class="login-dialog-content">
+            <div class="login-dialog-header">
+                <h2>Sign In Required</h2>
+                <button type="button" class="login-dialog-close" aria-label="Close dialog">&times;</button>
+            </div>
+            <div class="login-dialog-body">
+                <p>Please sign in to access the application.</p>
+                <div id="login-error" class="login-error"></div>
+                <form id="login-form" onsubmit="configUI.handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" required autocomplete="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" required autocomplete="current-password" placeholder="Password">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </div>
+                </form>
+                <p class="login-note">Note: Sign up is disabled. Only existing accounts can sign in.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
